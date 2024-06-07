@@ -1,0 +1,17 @@
+{
+  "name": "task-manager-group-project",
+  "version": "1.0.0",
+  "description": "# User Story ## As a user, I want to be able to: # Sign Up and Log In: # Create an account with my email and password. # Log in to my account to access the tool.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3"
+  }
+}
