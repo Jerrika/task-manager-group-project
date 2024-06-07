@@ -1,31 +1,36 @@
-# task-manager-group-project
+# Task Manager Project #2
 
-## User Story
-# As a user, I want to be able to:
+# User Story
+## As a user, I want to be able to:
 # Sign Up and Log In:
 # Create an account with my email and password.
 # Log in to my account to access the tool.
 
-## Manage My Profile:
-# Update my personal information and profile picture.
-# Create and Manage Tasks:
-# Create new tasks with titles, descriptions, due dates, and priority levels.
-# Edit or delete tasks I have created.
+# Acceptance Criteria 
 
-## Assign Tasks:
-# Assign tasks to team members.
-# Reassign tasks to different team members if necessary.
+# Manage My Profile:
+# WHEN I Update my personal information and profile picture.
+# THEN I Create and Manage Tasks:
+# WHEN I Create new tasks with titles, descriptions, due dates, and priority levels.
+# THEN I am able to edit or delete tasks I have created.
+
+# Assign Tasks:
+# WHEN I Assign tasks to team members.
+# THEN I am able to reassign tasks to different team members if necessary.
+
 # Track Task Progress:
-# View a list of all tasks assigned to me or created by me.
-# Mark tasks as in progress, completed, or pending.
-# View the progress of tasks I have assigned to others.
+# WHEN I View a list of all tasks assigned to me or created by me.
+# THEN I Mark tasks as in progress, completed, or pending.
+# WHEN I View the progress of tasks I have assigned to others.
+# MISSING THEN STATEMENT
+
 # Collaborate with Team Members:
-# Comment on tasks to communicate with team members.
-# Receive notifications when someone comments on a task or assigns a task to me.
+# WHEN I Comment on tasks to communicate with team members.
+# THEN I Receive notifications when someone comments on a task or assigns a task to me.
 
 ## Organize Tasks:
-# Categorize tasks by project or team.
-# Use filters and search functions to find specific tasks quickly.
+# WHEN I Categorize tasks by project or team.
+# THEN I Use filters and search functions to find specific tasks quickly.
 
 ## User Requirements
 # Authentication and Authorization:
