@@ -54,7 +54,8 @@
 ## Collaboration and Communication:
 # Users must be able to comment on tasks.
 # Notifications must be sent to users when a task is assigned to them or when there are comments on their tasks.
-# Organization and Search: -I think this can be optional since search functionality can be difficult and time consuming to implement
+
+# Organization and Search: I think this can be optional since search functionality can be difficult and time consuming to implement
 # Users must be able to categorize tasks by project or team.
 # Users must be able to search for tasks and filter them based on various criteria (e.g., status, priority, due date).
 
