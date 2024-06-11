@@ -1,5 +1,4 @@
 //Define table for users
-
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt'); //for hashing and comparing passwords
 const sequelize = require('../config/connection');
