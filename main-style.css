@@ -154,9 +154,34 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 200px;
   }
   
   #addTaskBtn:hover {
     background-color: #0056b3;
   }
   
+  .task {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: move;
+  }
+  
+  .task.dragging {
+    opacity: 0.5; /* Reduce opacity when dragging */
+  }
+
+  .task {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
