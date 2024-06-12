@@ -3,7 +3,7 @@ const Task= require('./Task');
 
 //Define associations
 User.hasMany(Task, {
-    foreignKey: 'task_id',
+    foreignKey: 'id',
     onDelete: 'CASCADE',
 });
 
