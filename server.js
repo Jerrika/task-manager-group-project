@@ -4,6 +4,11 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+const sequelize = require('./config/connection');
+//Import models to sync tables with database
+const { User, Task }  = require('./models');
+
+
 // Location of static files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -36,7 +41,10 @@ app.get('/', (req, res) => {
   res.send('Procrastination Nation');
 });
 
-// Start the server
-app.listen(port, () => {
+
+//Connect to the database before starting the Express.js server
+sequelize.sync().then(() => {
+  app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+  });
 });
