@@ -18,21 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
       taskModal.style.display = 'none';
     });
   
-    let tasks = [];
+     // Sample tasks
+     let tasks = [];
 
-    // Function to save tasks to localStorage
-    function saveTasks() {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-
-    // Function to load tasks from localStorage
-    function loadTasks() {
-        const tasksData = JSON.parse(localStorage.getItem('tasks'));
-        if (tasksData) {
-            tasks = tasksData;
-        }
-    }
-
+     // Function to save tasks to localStorage
+     function saveTasks() {
+         localStorage.setItem('tasks', JSON.stringify(tasks));
+     }
 
     // Add task
     taskForm.addEventListener('submit', function(event) {
@@ -73,6 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       return task;
     }
+
+    function saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    
   });
 
 // Add event listeners for drag and drop
