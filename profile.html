@@ -4,33 +4,152 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Management</title>
-    <!-- CSS Link Goes Here -->
+    <link rel="stylesheet" href="profile.css" />
   </head>
   <body>
-    <header>
-      <h1>Profile Management</h1>
-      <nav>
-        <ul>
-          <li><a href="#" data-target="home"</a></li>
-          <li><a href="#section2">Personal Information</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <section id="Profile Picture">
-        <h2>Change Profile Picture</h2>
-      </section>
-
-      <section id="Personal Information">
-        <h2>Edit Information</h2>
-        <p>First Name:</p>
-        <p>Last Name:</p>
-        <p>Email:</p>
-        <p>Phone Number:</p>
-        <p>Address:</p>
-      </section>
-    </main>
-    <!-- JS Link Goes Here -->
+    <nav>
+      <ul>
+        <li><a href="main-index.html">Home</a></li>
+        <li><a href="#" data-target="profile-picture">Profile Picture</a></li>
+        <li><a href="#" data-target="personal-info">Personal Info</a></li>
+        <li><a href="#" data-target="change-password">Change Password</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div id="home" class="page">Homepage</div>
+      <div id="profile" class="page">Profile</div>
+      <div id="profile-picture" class="page">
+        <h2>Select a Profile Picture</h2>
+        <div class="provided-pictures">
+          <img
+            src="avi1.png"
+            alt="Picture 1"
+            class="profile-pic"
+            onclick="selectProfile('avi1.png')"
+          />
+          <img
+            src="avi2.png"
+            alt="Picture 2"
+            class="profile-pic"
+            onclick="selectProfile('avi2.png')"
+          />
+          <img
+            src="avi3.png"
+            alt="Picture 3"
+            class="profile-pic"
+            onclick="selectProfile('avi3.png')"
+          />
+          <img
+            src="avi4.png"
+            alt="Picture 4"
+            class="profile-pic"
+            onclick="selectProfile('avi4.png')"
+          />
+          <img
+            src="avi5.png"
+            alt="Picture 5"
+            class="profile-pic"
+            onclick="selectProfile('avi5.png')"
+          />
+          <img
+            src="avi6.png"
+            alt="Picture 6"
+            class="profile-pic"
+            onclick="selectProfile('avi6.png')"
+          />
+          <img
+            src="avi7.png"
+            alt="Picture 7"
+            class="profile-pic"
+            onclick="selectProfile('avi7.png')"
+          />
+          <img
+            src="avi8.png"
+            alt="Picture 8"
+            class="profile-pic"
+            onclick="selectProfile('avi8.png')"
+          />
+          <img
+            src="avi9.png"
+            alt="Picture 9"
+            class="profile-pic"
+            onclick="selectProfile('avi9.png')"
+          />
+          <img
+            src="avi10.png"
+            alt="Picture 10"
+            class="profile-pic"
+            onclick="selectProfile('avi10.png')"
+          />
+          <img
+            src="avi11.png"
+            alt="Picture 11"
+            class="profile-pic"
+            onclick="selectProfile('avi11.png')"
+          />
+          <img
+            src="avi12.png"
+            alt="Picture 12"
+            class="profile-pic"
+            onclick="selectProfile('avi12.png')"
+          />
+          <img
+            src="avi13.png"
+            alt="Picture 13"
+            class="profile-pic"
+            onclick="selectProfile('avi13.png')"
+          />
+          <img
+            src="avi14.png"
+            alt="Picture 14"
+            class="profile-pic"
+            onclick="selectProfile('avi14.png')"
+          />
+        </div>
+        <div class="upload-picture">
+          <label for="upload">Upload your own picture:</label>
+          <input
+            type="file"
+            id="upload"
+            accept="image/*"
+            onchange="displayUploadedPicture(this)"
+          />
+        </div>
+        <div id="selected-profile" style="display: none">
+          <h3>Selected Profile Picture:</h3>
+          <img
+            id="selected-profile-img"
+            src="#"
+            alt="Selected Profile Picture"
+          />
+          <button onclick="saveProfilePicture()">Save</button>
+        </div>
+      </div>
+      <div id="personal-info" class="page" style="display: none;">
+        <h2>Personal Information</h2>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name"><br><br>
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name"><br><br>
+        <label for="linkedin-profile">LinkedIn Profile:</label>
+        <input type="text" id="linkedin-profile" name="linkedin-profile"><br><br>
+        <label for="email">E-Mail:</label>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="about-me">About Me:</label><br>
+        <textarea id="about-me" name="about-me" rows="4" cols="50"></textarea><br><br>
+        <button id="save-info-button">Save</button>
+      </div>
+      <div id="change-password" class="page" style="display: none;">
+        <h2>Change Password</h2>
+        <label for="old-password">Old Password:</label>
+        <input type="password" id="old-password" name="old-password"><br><br>
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password"><br><br>
+        <button id="change-password-button">Change Password</button>
+      </div>
+      <div id="logout" class="page" style="display: none;">Logout Successful.</div>
+      <div id="settings" class="page" style="display: none;">Here you can change your Settings.</div>
+    </div>
+    <script src="profile.js"></script>
   </body>
 </html>
