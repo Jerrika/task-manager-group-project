@@ -8,6 +8,9 @@ const sequelize = require('./config/connection');
 //Import models to sync tables with database
 const { User, Task }  = require('./models');
 
+const routes = require('./controllers/api');
+//turn on routes
+app.use(routes);
 
 // Location of static files
 app.use(express.static(path.join(__dirname, 'public')));
