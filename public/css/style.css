@@ -22,6 +22,13 @@ h1 {
   font-style: normal;
   text-align: justify;
   font-size: xxx-large;
+  box-shadow: greenyellow;
+  text-decoration-thickness: 20px;
+}
+
+nav {
+justify-content: space-around;
+justify-content: center;
 }
 
 #navbar-brand {
@@ -34,10 +41,65 @@ h1 {
 
 
 .nav-link {
-  color: black;
-  font-family: "ABeeZee", sans-serif;
+  color: white;
+  font-family: "Varela Round", sans-serif;
   font-weight: 400;
   font-style: normal;
+  
+}
+
+.nav-item {
+  align-content: space-around;
+  justify-content: flex-start;
+  width: 200px;
+  font-family: "Varela Round", sans-serif;
+  font-size: medium;
+
+
+}
+
+nav .justify-content-start{
+align-content: space-around;
+align-items: stretch;
+justify-content: center;
+flex: wrap;
+flex-direction: row;
+padding-left: 150px;
+width: 100px;
+text-align: center;
+}
+
+.project {
+justify-content: center;
+width: 50%;
+padding: 100px 50px 50px 100px;
+
+
+}
+
+
+.searchBar {
+display: block;
+width:300px;
+flex-direction: row-reverse;
+align-items: end;
+padding-left: 50px;
+
+
+}
+
+
+  .btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: green;
+    --bs-btn-border-color: green;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: green;
+    --bs-btn-hover-border-color: green;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+
 }
 
 
@@ -46,7 +108,7 @@ h1 {
 
 main {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding: 20px;
 }
 
@@ -62,6 +124,8 @@ main {
   padding: 10px;
   width: 30%;
   min-width: 300px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
 }
 
 .task-list h2 {
@@ -142,9 +206,10 @@ button:hover {
   background-color: #0056b3;
 }
 
-footer {
+.addtask {
   text-align: center;
   margin-top: 20px;
+  width:950px;
 }
 
 #addTaskBtn {
@@ -154,7 +219,7 @@ footer {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  width: 200px;
+  width: 500px;
 }
 
 #addTaskBtn:hover {
@@ -184,4 +249,13 @@ footer {
   padding: 5px 10px;
   border: none;
   cursor: pointer;
+}
+
+progress {
+
+ height: 25px;
+  font-size: 25px;
+  background-color: #f4f4f4;
+border-radius: 5%; 
+ 
 }
