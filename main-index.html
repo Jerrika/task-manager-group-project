@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,27 +9,62 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet">
   <title>Task Manager</title>
-  <link rel="stylesheet" href="main-style.css">
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
-    <div class="header">
-  <header>
-    <h1>Procastination Station</h1>
-    <ul class="nav justify-content-start">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">MyProfile</a>
+
+ 
+   
+  <header> 
+    <div class="nav">
+      <h1>Procastination Station</h1>
+         <ul class="nav justify-content-start">
+            <li class="nav-item">
+          <a class="offcanvas1" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">Profile <b>+</b></button>
+            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <div>
+                  I will not close if you click outside of me.
+                </div>
+              </div>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Projects</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Create New</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Task View</a>
+
+         <li class="nav-item">
+            <a class="nav-link" href="#">Create New</a>
         </li>
        
       </ul>
+
+      <div class="searchBar">
+        <label for="exampleDataList" class="form-label"></label>
+      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+      <datalist id="datalistOptions">
+        <option value="Pending">
+        <option value="In Progress">
+        <option value="Complete">
+    
+        </datalist>
+
+
+      </div>
+
+      </div>
+     
   </header>
-</div>
+
+  
+
 
 
     
@@ -54,7 +90,33 @@
         <h2>Completed</h2>
         <!-- Tasks will be dynamically added here -->
       </div>
-    </div>
+
+      <!--Side Profile -->
+      <div class="d-flex" style="height: 200px;">
+        <div class="vr">
+          <div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped" style="width: 10%"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped bg-success" style="width: 25%"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Info striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped bg-info" style="width: 50%"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped bg-warning" style="width: 75%"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar progress-bar-striped bg-danger" style="width: 100%"></div>
+          </div>
+    
+        </div>
+      </div>
+
+    
+      
+
+  <!--End of OffCanvas -->
 
     <div id="taskModal" class="modal">
       <div class="modal-content">
@@ -79,10 +141,10 @@
     </div>
   </main>
 
-  <footer>
+  <div class="addtask">
     <button id="addTaskBtn">Add Task</button>
-  </footer>
+  </div>
 
-  <script src="main.js"></script>
+  <script src="public/js/main.js"></script>
 </body>
 </html>
