@@ -64,3 +64,24 @@ document.getElementById('change-password-button').addEventListener('click', () =
   // Add code here to handle password change
   alert('Password changed successfully.');
 });
+
+document.getElementById('change-password-button').addEventListener('click', async () => {
+  const email = document.getElementById('email').value; // Assumes email is already filled
+  const oldPassword = document.getElementById('old-password').value;
+  const newPassword = document.getElementById('new-password').value;
+
+  const response = await fetch('/change-password', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email, oldPassword, newPassword })
+  });
+
+  const result = await response.json();
+  if (response.ok) {
+    alert('Password changed successfully.');
+  } else {
+    alert('Error: ' + result.error);
+  }
+});
