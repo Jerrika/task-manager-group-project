@@ -2,20 +2,54 @@ const express = require('express');
 const { create } = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser');
-const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
-const sequelize = require('./config/connection');
-const { User, Task } = require('./models');
+const { Sequelize, DataTypes } = require('sequelize');
 
 const app = express();
 const port = 3000;
 
-const pool = new Pool({
-  user: 'your_username',
+// Configure Sequelize to connect to PostgreSQL database
+const sequelize = new Sequelize({
+  dialect: 'postgres',
+  database: 'your_database', // Replace with your actual database name
+  username: 'your_username', // Replace with your actual database username
+  password: 'your_password', // Replace with your actual database password
   host: 'localhost',
-  database: 'your_database',
-  password: 'your_password',
   port: 5432,
+});
+
+// Define User model
+const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  passwordHash: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'password_hash', // This ensures the field in the database is named password_hash
+  },
+});
+
+// Define Task model (if needed)
+const Task = sequelize.define('Task', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  // Define other attributes for Task model as needed
 });
 
 // Location of static files
@@ -34,34 +68,16 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views')); // Set the views directory
 
-// Routes
-app.get('/login', (req, res) => {
-  res.render('landing-page', { title: 'Login', description: 'The first page where users are able to login to their account' });
-});
+// Routes (keep your existing routes as is)
 
-app.get('/home', (req, res) => {
-  res.render('home-page', { title: 'Home', description: 'The following page where users can utilize the website' });
-});
-
-app.get('/profile', (req, res) => {
-  res.render('profile-page', { title: 'Profile' });
-});
-
-app.get('/', (req, res) => {
-  res.send('Procrastination Nation');
-});
-
-// API Routes for user management
+// API Routes using Sequelize for user management
 app.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
-    const result = await pool.query(
-      'INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING id',
-      [username, email, passwordHash]
-    );
-    res.status(201).json({ userId: result.rows[0].id });
+    const user = await User.create({ username, email, passwordHash });
+    res.status(201).json({ userId: user.id });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -71,28 +87,35 @@ app.post('/change-password', async (req, res) => {
   const { email, oldPassword, newPassword } = req.body;
 
   try {
-    const result = await pool.query('SELECT password_hash FROM users WHERE email = $1', [email]);
-    if (result.rows.length === 0) {
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
       return res.status(400).json({ error: 'User not found' });
     }
 
-    const user = result.rows[0];
-    const isValid = await bcrypt.compare(oldPassword, user.password_hash);
+    const isValid = await bcrypt.compare(oldPassword, user.passwordHash);
     if (!isValid) {
       return res.status(400).json({ error: 'Incorrect old password' });
     }
 
     const newPasswordHash = await bcrypt.hash(newPassword, 10);
-    await pool.query('UPDATE users SET password_hash = $1 WHERE email = $2', [newPasswordHash, email]);
+    await user.update({ passwordHash: newPasswordHash });
     res.status(200).json({ message: 'Password changed successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Connect to the database before starting the Express.js server
-sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+// Connect to the database and start the server
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+    return sequelize.sync(); // Sync all defined models to the database
+  })
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
   });
-});
