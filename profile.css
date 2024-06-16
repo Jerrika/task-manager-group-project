@@ -1,0 +1,50 @@
+header {
+    background-color: #026aa7;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    height: 20%;
+    
+  } h1 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+    font-size: xx-large;
+  }
+
+
+h2 {
+        color: black;
+        font-family: "ABeeZee", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    
+
+
+
+
+  nav {
+
+    font-family: "ABeeZee", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: inline;
+    color: white;
+
+
+  } 
+
+  a {
+    color: rgba(var(--bs-link-color-rgb ), var(--bs-link-opacity, 1));
+    text-decoration: underline;
+    font-family: "ABeeZee", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: inline;
+    color: white;
+
+
+  } 
+

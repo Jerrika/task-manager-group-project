@@ -26,6 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
        localStorage.setItem('tasks', JSON.stringify(tasks));
    }
 
+   function loadTasks() {
+    const tasksData = JSON.parse(localStorage.getItem('tasks'));
+    if (tasksData) {
+        tasks = tasksData;
+    }
+}
+
   // Add task
   taskForm.addEventListener('submit', function(event) {
     event.preventDefault();
