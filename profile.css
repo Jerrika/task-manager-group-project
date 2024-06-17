@@ -1,11 +1,11 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Pacifico", cursive;
   margin: 0;
   padding: 0;
 }
 
 nav {
-  background-color: #333;
+  background-color: #026aa7;
   color: white;
 }
 
@@ -61,4 +61,13 @@ nav ul li a:hover {
 
 .hidden {
   display: none;
+}
+
+#selected-profile {
+  margin-top: 20px;
+}
+
+#selected-profile-img {
+  width: 150px;
+  height: 150px;
 }

@@ -4,9 +4,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const { Sequelize, DataTypes } = require('sequelize');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
+
+// CORS middleware setup
+app.use(cors());
 
 // Configure Sequelize to connect to PostgreSQL database
 const sequelize = new Sequelize({
@@ -38,37 +42,50 @@ const User = sequelize.define('User', {
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'password_hash', // This ensures the field in the database is named password_hash
+    field: 'password_hash',
   },
-});
-
-// Define Task model (if needed)
-const Task = sequelize.define('Task', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+  profilePicture: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'profile_picture',
   },
-  // Define other attributes for Task model as needed
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'first_name',
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'last_name',
+  },
+  linkedinProfile: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    field: 'linkedin_profile',
+  },
+  aboutMe: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+    field: 'about_me',
+  },
 });
 
 // Location of static files
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json()); // Middleware to parse JSON bodies
+app.use(bodyParser.json());
 
 // Handlebars setup
 const hbs = create({
   extname: '.handlebars',
   defaultLayout: false,
   layoutsDir: path.join(__dirname, 'views/layouts'),
-  partialsDir: path.join(__dirname, 'views/partials')
+  partialsDir: path.join(__dirname, 'views/partials'),
 });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'views')); // Set the views directory
-
-// Routes (keep your existing routes as is)
+app.set('views', path.join(__dirname, 'views'));
 
 // API Routes using Sequelize for user management
 app.post('/register', async (req, res) => {
@@ -105,17 +122,46 @@ app.post('/change-password', async (req, res) => {
   }
 });
 
+// Save Profile Picture
+app.post('/save-profile-picture', async (req, res) => {
+  const { profilePicture, email } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(400).json({ error: 'User not found' });
+    }
+
+    await user.update({ profilePicture });
+    res.status(200).json({ message: 'Profile picture saved successfully.' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Save Personal Information
+app.post('/save-personal-info', async (req, res) => {
+  const { firstName, lastName, linkedinProfile, email, aboutMe } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(400).json({ error: 'User not found' });
+    }
+
+    await user.update({ firstName, lastName, linkedinProfile, aboutMe });
+    res.status(200).json({ message: 'Personal information saved successfully.' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Connect to the database and start the server
 sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
-    return sequelize.sync(); // Sync all defined models to the database
+    return sequelize.sync({ alter: true });
   })
   .then(() => {
     app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-    });
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+      
