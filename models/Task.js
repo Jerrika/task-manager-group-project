@@ -16,7 +16,7 @@ Task.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        desription: {
+        description: {
             type: DataTypes.TEXT,
         },
         due_date: {
@@ -31,14 +31,7 @@ Task.init(
             type: DataTypes.STRING,
             defaultValue: 'pending', 
         },
-        assigned_to: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
-        created_by: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',

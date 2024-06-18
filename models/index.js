@@ -3,8 +3,13 @@ const Task= require('./Task');
 
 //Define associations
 User.hasMany(Task, {
-    foreignKey: 'id',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });
+
+Task.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+
 
 module.exports = {User, Task};

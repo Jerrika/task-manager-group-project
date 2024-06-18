@@ -1,14 +1,12 @@
-const { Task } = require('../models/Task');
+const { Task } = require('../models');
 
 const taskData = [
     {
         title: 'test',
         description: 'this is a test',
-        due_date: 'today',
+        due_date: new Date('2024-06-16'),
         priority: 'low',
         status: 'pending',
-        assigned_to: 'me',
-        created_by: 'me',
     }
 ];
 
