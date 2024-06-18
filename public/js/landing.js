@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (validateEmail(email)) {
         messageDiv.textContent = 'Successfully Signed In!';
         messageDiv.style.color = 'green';
-        window.location.href = 'index.html';
+        window.location.href = 'main-index.html';
       } else {
         messageDiv.textContent = 'Invalid Email Format';
       }

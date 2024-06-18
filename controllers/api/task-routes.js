@@ -7,6 +7,10 @@ const Task = require('../../models/Task');
 router.get('/', (req, res) => {
     Task.findAll().then((taskData) => {
         res.json(taskData);
+    })
+    .catch((err) => {
+        console.error('Error fetching tasks:', err);
+        res.status(500).json({ error: 'Error fetching tasks' });
     });
 });
 
@@ -30,8 +34,6 @@ router.post('/', (req, res) =>{
         due_date: req.body.due_date,
         priority: req.body.priority,
         status: req.body.status,
-        assigned_to: req.body.assigned_to,
-        created_by: req.body.created_by
     }).then((newTask) => {
         res.json(newTask);
     }).catch((err) => {
@@ -47,8 +49,6 @@ router.put('/:id', (req, res) => {
         due_date: req.body.due_date,
         priority: req.body.priority,
         status: req.body.status,
-        assigned_to: req.body.assigned_to,
-
     },
     {
         where: {
@@ -69,5 +69,15 @@ router.delete('/:id', (req, res) => {
         res.json(taskData);
     });
 });
+
+/*
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    res.render('login');
+  });
+  */
 
 module.exports = router;

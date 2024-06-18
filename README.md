@@ -1,64 +1,43 @@
-# Task Manager Project #2
+# Procrastination Station
 
-# User Story
-## As a user, I want to be able to:
-# Sign Up and Log In:
-# Create an account with my email and password.
-# Log in to my account to access the tool.
+## Description
 
-# Acceptance Criteria 
+This app allows users to create, manage, and delete tasks. Users can sign up with their email and password, log in to access the tool, and update their personal information and profile picture. Users are able to track task progress by viewing and updating task statuses.
 
-# Manage My Profile:
-# WHEN I Update my personal information and profile picture.
-# THEN I Create and Manage Tasks:
-# WHEN I Create new tasks with titles, descriptions, due dates, and priority levels.
-# THEN I am able to edit or delete tasks I have created.
+## Installation
 
-# Assign Tasks:
-# WHEN I Assign tasks to team members.
-# THEN I am able to reassign tasks to different team members if necessary.
+N/A
 
-# Track Task Progress:
-# WHEN I View a list of all tasks assigned to me or created by me.
-# THEN I Mark tasks as in progress, completed, or pending.
-# WHEN I View the progress of tasks I have assigned to others.
-# MISSING THEN STATEMENT
+## Usage
 
-# Collaborate with Team Members:
-# WHEN I Comment on tasks to communicate with team members.
-# THEN I Receive notifications when someone comments on a task or assigns a task to me.
+Landing page:
 
-## Organize Tasks:
-# WHEN I Categorize tasks by project or team.
-# THEN I Use filters and search functions to find specific tasks quickly.
+The user must have an account and input their email and password to log in. If they don't have an account, users can sign up for one by clicking the "Create a new account" link.
 
-## User Requirements
-# Authentication and Authorization:
-# Users must be able to create an account, log in, and log out.
-# Passwords must be stored securely using hashing.
-# User sessions must be managed securely.
+Main page:
 
-## Profile Management:
-# Users must be able to update their personal information and upload a profile picture.
+The user must click the "Add task" button and fill out the fields for task title, task deadline, and task description. Once that is done, a task card will be created on the page. The user can move the card into 3 different lanes: To Do, In Progress, Done. Tasks are able to be deleted by clicking the "Delete" button on the card.
 
-## Task Management:
-# Users must be able to create, edit, and delete tasks.
-# Each task must have a title, description, due date, and priority level.
-# Users must be able to assign tasks to other registered users.
+Profile Page:
 
-## Task Tracking:
-# Users must be able to view tasks assigned to them and tasks they have created.
-# Tasks must have status indicators (e.g., pending, in progress, completed).
-# Users must be able to change the status of tasks.
+Users can select a profile picture from the pre-populated avatars. Additionally, users can upload their own picture by clicking "Choose File". Once the user has chosen their picture, they can save it by pressing the "Save" button.
 
-## Collaboration and Communication:
-# Users must be able to comment on tasks.
-# Notifications must be sent to users when a task is assigned to them or when there are comments on their tasks.
+Users can navigate to the "Personal Info" tab in the header to change their first name, last name, linkedin profile, email, and about me sections. The header also provides a "Change Password" tab where users can change their password.
 
-# Organization and Search: I think this can be optional since search functionality can be difficult and time consuming to implement
-# Users must be able to categorize tasks by project or team.
-# Users must be able to search for tasks and filter them based on various criteria (e.g., status, priority, due date).
+Deployed app: 
 
-## Security:
-# The application must protect sensitive information using environment variables.
-# All data must be transmitted over secure connections (HTTPS).
+## Credits
+
+Code provided by jQuery and Bootstrap.
+
+Collaborators: 
+
+https://github.com/brooke-dunlap
+
+https://github.com/Jerrika
+
+https://github.com/kristencullen
+
+## License
+
+N/A
