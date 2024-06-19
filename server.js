@@ -35,7 +35,10 @@ const hbs = create({
 });
 */
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+  layoutsDir: 'views/layouts/',
+  defaultLayout: false,
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
