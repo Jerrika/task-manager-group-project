@@ -1,0 +1,80 @@
+<head>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<nav>
+      <ul>
+        <li><a href="main-index.html">Home</a></li>
+        <li><a href="#" data-target="profile-picture">Profile Picture</a></li>
+        <li><a href="#" data-target="personal-info">Personal Info</a></li>
+        <li><a href="#" data-target="change-password">Change Password</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div id="home" class="page">Homepage</div>
+      <div id="profile" class="page">Profile</div>
+      <div id="profile-picture" class="page">
+        <h2>Select a Profile Picture</h2>
+        <div class="provided-pictures" id="provided-pictures"></div>
+        <div class="upload-picture">
+          <label for="upload">Upload your own picture:</label>
+          <input
+            type="file"
+            id="upload"
+            accept="image/*"
+            onchange="displayUploadedPicture(this)"
+          />
+        </div>
+        <div id="selected-profile" style="display: none">
+          <h3>Selected Profile Picture:</h3>
+          <img
+            id="selected-profile-img"
+            src="#"
+            alt="Selected Profile Picture"
+          />
+          <button onclick="saveProfilePicture()">Save</button>
+        </div>
+      </div>
+      <div id="personal-info" class="page" style="display: none">
+        <h2>Personal Information</h2>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" /><br /><br />
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" /><br /><br />
+        <label for="linkedin-profile">LinkedIn Profile:</label>
+        <input
+          type="text"
+          id="linkedin-profile"
+          name="linkedin-profile"
+        /><br /><br />
+        <label for="email">E-Mail:</label>
+        <input type="text" id="email" name="email" /><br /><br />
+        <label for="about-me">About Me:</label><br />
+        <textarea id="about-me" name="about-me" rows="4" cols="50"></textarea
+        ><br /><br />
+        <button id="save-info-button">Save</button>
+      </div>
+      <div id="change-password" class="page" style="display: none">
+        <h2>Change Password</h2>
+        <label for="old-password">Old Password:</label>
+        <input
+          type="password"
+          id="old-password"
+          name="old-password"
+        /><br /><br />
+        <label for="new-password">New Password:</label>
+        <input
+          type="password"
+          id="new-password"
+          name="new-password"
+        /><br /><br />
+        <button id="change-password-button">Change Password</button>
+      </div>
+      <div id="logout" class="page" style="display: none">
+        Logout Successful.
+      </div>
+      <div id="settings" class="page" style="display: none">
+        Here you can change your Settings.
+      </div>
+    </div>
+    <script src="/js/profile.js"></script>

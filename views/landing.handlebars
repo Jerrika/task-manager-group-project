@@ -1,0 +1,55 @@
+ <head>  
+  <link rel="stylesheet" href="/css/landing.css">
+</head>
+
+ <div class="container-fluid">
+    <div class="row">
+      <div class="col-8 p-0">
+          <img src="https://c4.wallpaperflare.com/wallpaper/23/174/351/spongebob-squarepants-patrick-star-cartoon-humor-wallpaper-preview.jpg" class="img-fluid custom-img-size">
+      </div>
+      <div class="col-4 d-flex align-items-center p-0">
+        <div class="login-container">
+          <h1>Procrastination Station</h1>
+          <h2>Sign In</h2>
+          <form id="login-form">
+            <div class="input-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="input-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Sign In</button>
+          </form>
+          <div id="message"></div>
+          <p><a href="#" id="create-account-link">Create a new account</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="account-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Create Account</h2>
+      <form id="create-account-form">
+        <div class="input-group">
+          <label for="new-email">Email:</label>
+          <input type="email" id="new-email" name="new-email" required />
+        </div>
+        <div class="input-group">
+          <label for="new-password">Password:</label>
+          <input type="password" id="new-password" name="new-password" required />
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password:</label>
+          <input type="password" id="confirm-password" name="confirm-password" required />
+        </div>
+        <button type="submit">Create Account</button>
+      </form>
+      <div id="create-message"></div>
+    </div>
+  </div>
+
+  <script src="/js/landing.js"></script>

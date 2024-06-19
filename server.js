@@ -1,10 +1,9 @@
 const express = require('express');
-const { create } = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const path = require('path');
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const sequelize = require('./config/connection');
-const routes = require('./controllers/api');
+const routes = require('./controllers');
 const session = require('express-session');
 
 
@@ -21,11 +20,12 @@ const sess = {
 app.use(session(sess));
 
 // Location of static files
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json()); // Middleware to parse JSON bodies
+app.use(express.urlencoded({extended: true}));
+app.use(routes);
 
-app.use('/api/', routes);
-
+/*
 // Handlebars setup
 const hbs = create({
   extname: '.handlebars',
@@ -33,15 +33,12 @@ const hbs = create({
   layoutsDir: path.join(__dirname, 'views/layouts'),
   partialsDir: path.join(__dirname, 'views/partials')
 });
+*/
+
+const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'views')); // Set the views directory
-
-// Serve the landing page
-app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/landing.html'))
-);
 
 // Connect to the database and start the server
 sequelize.authenticate()
