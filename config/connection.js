@@ -9,6 +9,8 @@ const sequelize = new Sequelize(
   process.env.DB_USER,
   //Password
   process.env.DB_PASSWORD,
+//URL
+  process.env.DB_URL,
   {
     // Database location
     host: 'localhost',
